@@ -3,7 +3,7 @@ import "./App.css";
 
 function App() {
   const [displayValue, setDisplayValue] = useState("");
-  const [expression, setExpression] = useState("0");
+  const [expression, setExpression] = useState("");
 
   const handleBtnClick = (value) => {
     setDisplayValue("");
@@ -18,7 +18,7 @@ function App() {
       else evaluateExpression();
     } else if (value === "C") {
       setDisplayValue("");
-      setExpression("0");
+      setExpression("");
     } else {
       updateValue(value);
     }
@@ -26,14 +26,7 @@ function App() {
 
   const updateValue = (value) => {
     if (value === "0" && displayValue === "0") return;
-
-    if (expression === "0" && ["+", "-", "*", "/"].includes(value)) {
-      setExpression(`0${value}`);
-    } else {
-      setExpression((prevState) =>
-        prevState === "0" ? value : prevState + value
-      );
-    }
+    setExpression((prevState) => prevState + value);
   };
 
   const evaluateExpression = () => {

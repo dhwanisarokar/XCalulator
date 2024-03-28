@@ -8,7 +8,13 @@ function App() {
   const handleBtnClick = (value) => {
     setDisplayValue("");
     if (value === "=") {
-      if (value === "") setDisplayValue("Error");
+      if (
+        !expression.includes("+") &&
+        !expression.includes("-") &&
+        !expression.includes("*") &&
+        !expression.includes("/")
+      )
+        setDisplayValue("Error");
       else evaluateExpression();
     } else if (value === "C") {
       setDisplayValue("");
